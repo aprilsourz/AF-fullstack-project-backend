@@ -26,8 +26,9 @@ class ItemsController < ProtectedController
 
   # PATCH/PUT /items/1
   def update
-    if @item.update(item_params)
-      render json: @item.errors
+    @current_edit = current_user.items.find(@item)
+    if @current_edit.update(item_params)
+      render json: @current_edit
     else
       render json: @item.errors, status: :unprocessable_entity
     end
