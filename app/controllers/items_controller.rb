@@ -15,7 +15,7 @@ class ItemsController < ProtectedController
 
   # POST /items
   def create
-    @item = Item.new(item_params)
+    @item = current_user.items.build(item_params)
 
     if @item.save
       render json: @item, status: :created, location: @item
@@ -46,6 +46,6 @@ class ItemsController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def item_params
-      params.require(:item).permit(:content, :user_id)
+      params.require(:item).permit(:content)
     end
 end
