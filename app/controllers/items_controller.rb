@@ -18,7 +18,7 @@ class ItemsController < ProtectedController
     @item = current_user.items.build(item_params)
 
     if @item.save
-      render json: @item, status: :created, location: @item
+      render json: @item
     else
       render json: @item, status: :unprocessable_entity
     end
