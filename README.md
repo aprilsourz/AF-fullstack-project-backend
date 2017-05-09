@@ -224,87 +224,58 @@ All items action requests must include a valid HTTP header `Authorization: Token
 <td>GET</td>
 <td>`/items/</td>
 <td><strong>Items for signed in user</strong></td>
-<td>204 No Content</td>
+<td>200 OK</td>
 <td><strong>user w/token</strong></td>
 </tr>
 <tr>
   <td colspan="3"></td>
-  <td>400 Bad Request</td>
-  <td><em>empty</em></td>
+  <td>400 bad request</td>
+  <td><em>Items w/ ids</em></td>
 </tr>
 </table>
 
 ### index
 
-The `index` action is a *GET* that retrieves all the games associated with a
+The `index` action is a *GET* that retrieves all the items associated with a
  user.
 The response body will contain JSON containing an array of games, e.g.:
 
 ```json
 {
-  "games": [
+  "items": [
     {
-      "id": 1,
-      "cells": ["o","x","o","x","o","x","o","x","o"],
-      "over": true,
-      "player_x": {
-        "id": 1,
-        "email": "and@and.com"
-      },
-      "player_o": {
-        "id": 3,
-        "email": "dna@dna.com"
-      }
+      "content": "Item 1",
+      "id": 43
     },
     {
-      "id": 2,
-      "cells": ["","","","","","","","",""],
-      "over": false,
-      "player_x": {
-        "id": 3,
-        "email": "dna@dna.com"
-      },
-      "player_o": {
-        "id": 1,
-        "email": "and@and.com"
-      }
+      "content": "Item 2",
+      "id": 3
     }
   ]
 }
 ```
-
-If the `over` query parameter is specified the results will be restricted
- accordingly.
-
-If there are no games associated with the user, the response body will contain
- an empty games array, e.g.:
-
-```json
-{
-  "games": [
-  ]
-}
-```
-
 ### create
 
-The `create` action expects a *POST* with an empty body (e.g `''` or `'{}'` if
- JSON).
-If the request is successful, the response will have an HTTP Status of 201
- Created, and the body will contain JSON of the created game with `player_x` set
-to the user calling `create`, e.g.:
+The `create` action expects a *POST* 
+
+Example JSON
 
 ```json
 {
-  "game": {
-    "id": 3,
-    "cells": ["","","","","","","","",""],
-    "over": false,
-    "player_x": {
-      "id": 1,
-      "email": "and@and.com"
-    },
-    "player_o": null
+    "item": {
+      "content": "Item Content"
+    }
+  }
+ ```
+
+If the request is successful, the response will have an HTTP Status of 200
+ OK, and the body will contain JSON of the Item and its id.
+
+```json
+{
+  "item": {
+    "content": "Item Content",
+    "id": 48
   }
 }
 ```
