@@ -185,82 +185,51 @@ All items action requests must include a valid HTTP header `Authorization: Token
   <th>body</th>
 </tr>
 <tr>
-<td>GET</td>
-<td>`/games`</td>
-<td>n/a</td>
+<td>POST</td>
+<td>`/items`</td>
+<td><strong>item</strong></td>
 <td>200, OK</td>
-<td><strong>All games for signed in user</strong></td>
+<td><strong>user</strong></td>
+</tr>
+<tr>
+  <td colspan="3"></td>
+  <td>400 Bad Request</td>
+  <td><em>empty</em></td>
 </tr>
 <tr>
 <td>POST</td>
-<td>`/games`</td>
-<td>n/a</td>
-<td>201, Created</td>
-<td><strong>game created</strong></td>
+<td>`/sign-in`</td>
+<td><strong>credentials</strong></td>
+<td>200 OK</td>
+<td><strong>user w/token</strong></td>
 </tr>
 <tr>
-  <td colspan="3">
-  </td>
+  <td colspan="3"></td>
   <td>401 Unauthorized</td>
   <td><em>empty</em></td>
 </tr>
 <tr>
-  <td colspan="3">
-  </td>
-  <td>400 Bad Request</td>
-  <td><strong>errors</strong></td>
+<td>DELETE</td>
+<td>`/sign-out/:id`</td>
+<td>empty</td>
+<td>201 Created</td>
+<td>empty</td>
 </tr>
 <tr>
-<td>GET</td>
-<td>`/games/:id`</td>
-<td>n/a</td>
-<td>200, OK</td>
-<td><strong>game found</strong</td>
-</tr>
-<tr>
-  <td colspan="3">
-  </td>
+  <td colspan="3"></td>
   <td>401 Unauthorized</td>
   <td><em>empty</em></td>
 </tr>
 <tr>
-  <td colspan="3">
-  </td>
-  <td>404 Not Found</td>
-  <td><em>empty</em></td>
-</tr>
-<tr>
 <td>PATCH</td>
-<td>`/games/:id`</td>
-<td><em>empty</em></td>
-<td>200, OK</td>
-<td><strong>game joined</strong></td>
+<td>`/change-password/:id`</td>
+<td><strong>passwords</strong></td>
+<td>204 No Content</td>
+<td><strong>user w/token</strong></td>
 </tr>
 <tr>
   <td colspan="3"></td>
   <td>400 Bad Request</td>
-  <td><strong>errors</strong></td>
-</tr>
-<tr>
-  <td colspan="3"></td>
-  <td>400 Bad Request</td>
-  <td><em>empty</em></td>
-</tr>
-<tr>
-<td>PATCH</td>
-<td>`/games/:id`</td>
-<td><strong>game delta</strong></td>
-<td>200, OK</td>
-<td><strong>game updated</strong></td>
-</tr>
-<tr>
-  <td colspan="3"></td>
-  <td>400 Bad Request</td>
-  <td><strong>errors</strong></td>
-</tr>
-<tr>
-  <td colspan="3"></td>
-  <td>404 Not Found</td>
   <td><em>empty</em></td>
 </tr>
 </table>
