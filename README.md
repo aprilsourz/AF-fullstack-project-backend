@@ -230,7 +230,7 @@ All items action requests must include a valid HTTP header `Authorization: Token
 <tr>
   <td colspan="3"></td>
   <td>400 bad request</td>
-  <td><em>Items w/ ids</em></td>
+  <td><em>items w/ ids</em></td>
 </tr>
 </table>
 
