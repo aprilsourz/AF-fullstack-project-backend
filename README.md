@@ -96,16 +96,9 @@ All data returned from API actions is formatted as JSON.
 The `create` action expects a *POST* of `credentials` identifying a new user to
  create, e.g. using `getFormFields`:
 
-```html
-<form>
-  <input name="credentials[email]" type="text" value="an@example.email">
-  <input name="credentials[password]" type="password" value="an example password">
-  <input name="credentials[password_confirmation]" type="password" value="an example password">
-</form>
-
 ```
 
-or using `JSON`:
+Example `JSON`:
 
 ```json
 {
