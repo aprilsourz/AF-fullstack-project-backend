@@ -1,16 +1,11 @@
 class ItemsController < ProtectedController
-  before_action :set_item, only: [:show, :update, :destroy]
+  before_action :set_item, only: [:update, :destroy]
 
   # GET /items
   def index
     @items = current_user.items.all
 
     render json: @items
-  end
-
-  # GET /items/1
-  def show
-    render json: @item
   end
 
   # POST /items
