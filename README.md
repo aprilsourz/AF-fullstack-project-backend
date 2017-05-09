@@ -169,11 +169,6 @@ The `sign-out` and `change-password` requests must include a valid HTTP header
 All items action requests must include a valid HTTP header `Authorization: Token
  token=<token>
 
-Games are associated with users, `player_x` and `player_o`.
-Actions, other than update, will only retrieve a game if the user associated
- with the `Authorization` header is one of those two users.
-If this requirement is unmet, the response will be 404 Not Found, except for
- the index action which will return an empty games array.
 
 *Summary:*
 
@@ -191,15 +186,14 @@ If this requirement is unmet, the response will be 404 Not Found, except for
 </tr>
 <tr>
 <td>GET</td>
-<td>`/games[?over=<true|false>]`</td>
+<td>`/games`</td>
 <td>n/a</td>
 <td>200, OK</td>
-<td><strong>games found</strong></td>
+<td><strong>All games for signed in user</strong></td>
 </tr>
 <tr>
   <td colspan="3">
-  The optional `over` query parameter restricts the response to games with a
-   matching `over` property.
+  
   </td>
   <td>200, OK</td>
   <td><em>empty games</em></td>
