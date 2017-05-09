@@ -223,9 +223,9 @@ All items action requests must include a valid HTTP header `Authorization: Token
 <tr>
 <td>GET</td>
 <td>`/items/</td>
-<td><strong>Items for signed in user</strong></td>
+<td><strong>item</strong></td>
 <td>200 OK</td>
-<td><strong>user w/token</strong></td>
+<td><strong>Items for signed in user</strong></td>
 </tr>
 <tr>
   <td colspan="3"></td>
