@@ -189,7 +189,7 @@ All items action requests must include a valid HTTP header `Authorization: Token
 <td>`/items`</td>
 <td><strong>item</strong></td>
 <td>200, OK</td>
-<td><strong>user</strong></td>
+<td><strong>item w/ id</strong></td>
 </tr>
 <tr>
   <td colspan="3"></td>
@@ -197,22 +197,22 @@ All items action requests must include a valid HTTP header `Authorization: Token
   <td><em>empty</em></td>
 </tr>
 <tr>
-<td>POST</td>
-<td>`/sign-in`</td>
-<td><strong>credentials</strong></td>
+<td>PATCH</td>
+<td>`/items/:id`</td>
+<td><strong>item</strong></td>
 <td>200 OK</td>
-<td><strong>user w/token</strong></td>
+<td><strong>item w/ id</strong></td>
 </tr>
 <tr>
   <td colspan="3"></td>
-  <td>401 Unauthorized</td>
+  <td>422 Unprocessable Entity</td>
   <td><em>empty</em></td>
 </tr>
 <tr>
 <td>DELETE</td>
-<td>`/sign-out/:id`</td>
+<td>`/items/:id`</td>
 <td>empty</td>
-<td>201 Created</td>
+<td>204 no content</td>
 <td>empty</td>
 </tr>
 <tr>
@@ -221,9 +221,9 @@ All items action requests must include a valid HTTP header `Authorization: Token
   <td><em>empty</em></td>
 </tr>
 <tr>
-<td>PATCH</td>
-<td>`/change-password/:id`</td>
-<td><strong>passwords</strong></td>
+<td>GET</td>
+<td>`/items/</td>
+<td><strong>Items for signed in user</strong></td>
 <td>204 No Content</td>
 <td><strong>user w/token</strong></td>
 </tr>
