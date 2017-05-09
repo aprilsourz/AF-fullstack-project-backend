@@ -97,9 +97,6 @@ The `create` action expects a *POST* of `credentials` identifying a new user to
  create, e.g. using `getFormFields`:
 
 ```
-
-Example `JSON`:
-
 ```json
 {
   "credentials": {
@@ -110,37 +107,10 @@ Example `JSON`:
 }
 ```
 
-The `password_confirmation` field is optional.
-
-If the request is successful, the response will have an HTTP Status of 201,
- Created, and the body will be JSON containing the `id` and `email` of the new
- user, e.g.:
-
-```json
-{
-  "user": {
-    "id": 1,
-    "email": "an@example.email"
-  }
-}
-```
-
-If the request is unsuccessful, the response will have an HTTP Status of 400 Bad
- Request, and the response body will be empty.
-
 ### signin
 
 The `signin` action expects a *POST* with `credentials` identifying a previously
  registered user, e.g.:
-
-```html
-<form>
-  <input name="credentials[email]" type="text" value="an@example.email">
-  <input name="credentials[password]" type="password" value="an example password">
-</form>
-```
-
-or:
 
 ```json
 {
