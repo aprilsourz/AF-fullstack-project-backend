@@ -94,7 +94,7 @@ All data returned from API actions is formatted as JSON.
 ### signup
 
 The `create` action expects a *POST* of `credentials` identifying a new user to
- create, e.g. using `getFormFields`:
+ create.
 
 ```
 ```json
@@ -110,7 +110,7 @@ The `create` action expects a *POST* of `credentials` identifying a new user to
 ### signin
 
 The `signin` action expects a *POST* with `credentials` identifying a previously
- registered user, e.g.:
+ registered user.
 
 ```json
 {
@@ -123,8 +123,7 @@ The `signin` action expects a *POST* with `credentials` identifying a previously
 
 If the request is successful, the response will have an HTTP Status of 200 OK,
  and the body will be JSON containing the user's `id`, `email`, and the `token`
- used to authenticate other requests, e.g.:
-
+ used to authenticate other requests.
 ```json
 {
   "user": {
@@ -165,12 +164,10 @@ The `sign-out` and `change-password` requests must include a valid HTTP header
  `Authorization: Token token=<token>` or they will be rejected with a status of
  401 Unauthorized.
 
-## Game actions
+## Item actions
 
-All games action requests must include a valid HTTP header `Authorization: Token
- token=<token>` or they will be rejected with a status of 401 Unauthorized.
-
-All of the game actions, except for `watch`, follow the *RESTful* style.
+All items action requests must include a valid HTTP header `Authorization: Token
+ token=<token>
 
 Games are associated with users, `player_x` and `player_o`.
 Actions, other than update, will only retrieve a game if the user associated
