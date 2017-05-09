@@ -1,8 +1,11 @@
 
 # To Do List API
 
-An API built for a to do list app. It has authentication, allowing
-the user to sign in, sign out, sign up, and change password.
+An API built for my to do list app. This project is for General Aseembly WDI project 2.
+
+It has authentication, allowing the user to sign in, sign out, sign up,
+and change password.
+
 The API will allow for the creation of new list items, editing
 existing list items, deleting list items, and will get all the
 list items for the associated user when they sign in.
@@ -13,6 +16,8 @@ list items for the associated user when they sign in.
 - Rails
 - curl
 - Postman
+
+Link to the front end repository [here](https://github.com/arlofeirman/AF-fullstack-project-frontend2)
 
 ## API end-points
 
