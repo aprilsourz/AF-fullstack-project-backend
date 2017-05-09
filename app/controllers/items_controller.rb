@@ -21,7 +21,7 @@ class ItemsController < ProtectedController
 
   # PATCH/PUT /items/1
   def update
-    @current_edit = current_user.items.find(@item)
+    @current_edit = current_user.items.find(@item.id)
     if @current_edit.update(item_params)
       render json: @current_edit
     else
