@@ -283,187 +283,40 @@ If the request is successful, the response will have an HTTP Status of 200
 If the request is unsuccessful, the response will have an HTTP Status of 400 Bad
  Request, and the response body will be JSON describing the errors.
 
-### show
 
-The `show` action is a *GET* specifing the `id` of the game to retrieve.
-If the request is successful the status will be 200, OK, and the response body
- will contain JSON for the game requested, e.g.:
+### destroy
 
-```json
-{
-  "game": {
-    "id": 1,
-    "cells": ["o","x","o","x","o","x","o","x","o"],
-    "over": true,
-    "player_x": {
-      "id": 1,
-      "email": "and@and.com"
-    },
-    "player_o": {
-      "id": 3,
-      "email": "dna@dna.com"
-    }
-  }
-}
-```
+The `destroy` actions is a *DELETE* specifying the `id` of the list item to delete.
+
+If the request is successful the response will have an HTTP status of 204 No
+ Content.
+
+If the request is unsuccessful, the response will have a status of 401
+ Unauthorized.
 
 ### update
 
-#### join a game as player 'o'
+The `update` action is a *PATCH* specifying the `id` of the list item to edit.
 
-This `update` action expects an empty (e.g `''` or `'{}'` if JSON) *PATCH* to
- join an existing game.
-
-If the request is successful, the response will have an HTTP Status of 200 OK,
- and the body will be JSON containing the game joined, e.g.:
+Eample JSON
 
 ```json
 {
-  "game": {
-    "id": 1,
-    "cells": ["","","","","","","","",""],
-    "over":false,
-    "player_x": {
-      "id": 1,
-      "email": "and@and.com"
-      },
-    "player_o": {
-      "id": 3,
-      "email":
-      "dna@dna.com"
+    "item": {
+      "content": "item content"
     }
   }
-}
 ```
 
-If the request is unsuccessful, the response will have an HTTP Status of 400 Bad
- Request, and the response body will be empty (game cannot be joined, player_o
- already set or user making request is player_x) or JSON describing the errors.
-
-#### update a game's states
-
-This `update` action expects a *PATCH* with changes to to an existing game,
- e.g.:
-
-```html
-<form>
-  <input name="game[cell][index]" type="text" value="0">
-  <input name="game[cell][value]" type="text" value="x">
-  <input name="game[over]" type="text" value="false">
-</form>
-```
+If the request is successful, the response will have an HTTP Status of 200
+ OK, and the body will contain JSON of the Item and its id.
 
 ```json
 {
-  "game": {
-    "cell": {
-      "index": 0,
-      "value": "x"
-    },
-    "over": false
+  "item": {
+    "content": "Item Content",
+    "id": 48
   }
 }
 ```
-
-If the request is successful, the response will have an HTTP Status of 200 OK,
- and the body will be JSON containing the modified game, e.g.:
-
-```json
-{
-  "game": {
-    "id": 1,
-    "cells": ["x","","","","","","","",""],
-    "over":false,
-    "player_x": {
-      "id": 1,
-      "email": "and@and.com"
-      },
-    "player_o": {
-      "id": 3,
-      "email":
-      "dna@dna.com"
-    }
-  }
-}
-```
-
-If the request is unsuccessful, the response will have an HTTP Status of 400 Bad
- Request, and the response body will be JSON describing the errors.
-
-### watch
-
-The `watch` action is handled differently than all the others.  Because `watch`
- implements a streaming source of data, we'll use a wrapper around the html5
- object EventSource to handle the events sent.
-
-You can find the wrapper [here](public/js/resource-watcher-0.1.0.js).
-The wrapper is also available from the deployed app at the path
- `/js/resource-watcher-0.1.0.js`.
-
-The events that `watch` implements let you know when a game has been updated.
-By using this interface you can write code that lets a player see another's move
- almost as it happens.
-Updates to the game from one player's browser are sent to the other's browser.
-
-You create a watcher object using the resourceWatcher function.
-This function takes two parameters, the watch url and a configuration object
- which must contain the Authorization token, and may contain an optional timeout
- in seconds, e.g.:
-
-```js
-let gameWatcher = resourceWatcher('<server>/games/:id/watch', {
-      Authorization: 'Token token=<token>'[,
-      timeout: <timeout>]
-});
-```
-
-By default, watching a game times-out after 120 seconds.
-
-You should add a handler for `change` and `error` events.
-The error events are not the most informative.
-The change event may pass to your handler an object with a root key of "timeout"
-or "heartbeat".
-
-Otherwise, it will pass an object with a root key of "game".  Each key in this
-object will contain an array of length 2.  The first element of such an array
-will contain the value for that key before the update.  The last element will
-contain the value after the update.  The code example that follows shows
-handling the most important case, a change to the game board.
-
-```js
-gameWatcher.on('change', function (data) {
-  console.log(data);
-  if (data.game && data.game.cells) {
-    const diff = changes => {
-      let before = changes[0];
-      let after = changes[1];
-      for (let i = 0; i < after.length; i++) {
-        if (before[i] !== after[i]) {
-          return {
-            index: i,
-            value: after[i],
-          };
-        }
-      }
-
-      return { index: -1, value: '' };
-    };
-
-    let cell = diff(data.game.cells);
-    $('#watch-index').val(cell.index);
-    $('#watch-value').val(cell.value);
-  } else if (data.timeout) { //not an error
-    gameWatcher.close();
-  }
-});
-
-gameWatcher.on('error', function (e) {
-  console.error('an error has occurred with the stream', e);
-});
-```
-
-## [License](LICENSE)
-
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+If the request is unsuccessful the reponse will have an HTTP status of 422 Unprocessable Entity
