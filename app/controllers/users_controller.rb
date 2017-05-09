@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class UsersController < ProtectedController
-  skip_before_action :authenticate, only: [:signup, :signin, :index]
+  skip_before_action :authenticate, only: [:signup, :signin]
 
   # POST '/sign-up'
   def signup
@@ -42,15 +42,6 @@ class UsersController < ProtectedController
     else
       head :no_content
     end
-  end
-
-  def index
-    render json: User.all
-  end
-
-  def show
-    user = User.find(params[:id])
-    render json: user
   end
 
   def update
