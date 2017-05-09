@@ -2,7 +2,7 @@
 # To Do List API
 
 An API built for a to do list app. It has authentication, allowing
-the user to sign in, sign out, sign up, and change password
+the user to sign in, sign out, sign up, and change password.
 The API will allow for the creation of new list items, editing
 existing list items, delete list items, and will get all the
 list items for the associated user when they sign in.
