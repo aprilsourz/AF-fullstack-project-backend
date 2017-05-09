@@ -31,7 +31,7 @@ class ItemsController < ProtectedController
 
   # DELETE /items/1
   def destroy
-     current_user.items.find(@item).destroy
+     current_user.items.find(@item.id).destroy
   end
 
   private
