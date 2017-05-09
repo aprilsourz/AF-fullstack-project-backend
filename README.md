@@ -16,10 +16,9 @@ list items for the associated user when they sign in.
 | DELETE | `/sign-out/:id`        | `users#signout`   |
 | PATCH  | `/change-password/:id` | `users#changepw`  |
 | GET    | `/items`               | `items#index`     |
-| POST   | `/games`               | `games#create`    |
-| GET    | `/games/:id`           | `games#show`      |
-| PATCH  | `/games/:id`           | `games#update`    |
-| GET    | `/games/:id/watch`     | `games#watch`     |
+| POST   | `/items`               | `items#create`    |
+| PATCH  | `/games/:id`           | `items#update`    |
+| DELETE | `/items/:id`           | `items#destroy`     |
 
 All data returned from API actions is formatted as JSON.
 
