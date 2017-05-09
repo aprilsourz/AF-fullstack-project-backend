@@ -192,13 +192,6 @@ All items action requests must include a valid HTTP header `Authorization: Token
 <td><strong>All games for signed in user</strong></td>
 </tr>
 <tr>
-  <td colspan="3">
-  
-  </td>
-  <td>200, OK</td>
-  <td><em>empty games</em></td>
-</tr>
-<tr>
 <td>POST</td>
 <td>`/games`</td>
 <td>n/a</td>
