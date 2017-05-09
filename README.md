@@ -199,13 +199,6 @@ All items action requests must include a valid HTTP header `Authorization: Token
   <td><em>empty games</em></td>
 </tr>
 <tr>
-  <td colspan="3">
-  The default is to retrieve all games associated with the user..
-  </td>
-  <td>401 Unauthorized</td>
-  <td><em>empty</em></td>
-</tr>
-<tr>
 <td>POST</td>
 <td>`/games`</td>
 <td>n/a</td>
