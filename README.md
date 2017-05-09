@@ -237,7 +237,7 @@ All items action requests must include a valid HTTP header `Authorization: Token
 
 The `index` action is a *GET* that retrieves all the items associated with a
  user.
-The response body will contain JSON containing an array of games, e.g.:
+The response body will contain JSON containing an array of items, e.g.:
 
 ```json
 {
